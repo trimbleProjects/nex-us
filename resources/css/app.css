@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.grid-row-color-offset:nth-child(2n){
+    background:#374151;
+}
+.grid-row-color-offset:nth-child(2n+1){
+    background:#6b7280;
+}
+.grid-row-color-offset:hover{
+    opacity: .9;
+}
