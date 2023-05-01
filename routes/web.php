@@ -39,7 +39,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/nexus/{state}', [ProfileController::class, 'NexusState'])->name('state');
     Route::get('/nexus/{state}', [ProfileController::class, 'NexusState'])->name('state');
     Route::post('/EditTransaction', [RatesController::class, 'EditTransaction'])->name('EditTransaction');
-    Route::get('/AmountLookup', [ProfileController::class, 'AmountLookup'])->name('AmountLookup');
+    Route::post('/AmountLookup', [ProfileController::class, 'AmountLookup'])->name('AmountLookup');
 });
 
 require __DIR__.'/auth.php';

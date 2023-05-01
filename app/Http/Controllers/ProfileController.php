@@ -176,21 +176,26 @@ class ProfileController extends Controller
 
     }
     public function AmountLookup(Request $request){
-        dd($request->all());
+        // dd($request->all());
+        $states = array("AL"=>"Alaska", "AK"=>"Arkansas", "AZ"=>"Arizona", "AR"=>"Arkansas", "CA"=>"California", "CO"=>"Colorado", "CT"=>"Connecticut", "DE"=>"Delaware", "FL"=>"Florida", "GA"=>"Georgia", "HI"=>"Hawaii", "ID"=>"Idaho", "IL"=>"Illinois", "IN"=>"Indiana", "IA"=>"Iowa", "KS"=>"Kansas", "KY"=>"Kentucky", "LA"=>"Louisiana", "ME"=>"Maine", "MD"=>"Maryland", "MA"=>"Massachusetts", "MI"=>"Michigan", "MN"=>"Minnesota", "MS"=>"Mississippi", "MO"=>"Missouri", "MT"=>"Montana", "NE"=>"Newbraska", "NV"=>"Nevada", "NH"=>"New Hampshire", "NJ"=>"New Jersey", "NM"=>"New Mexico", "NY"=>"New York", "NC"=>"North Carolina", "ND"=>"North Dakota", "OH"=>"Ohio", "OK"=>"Oklahoma", "OR"=>"Oregon", "PA"=>"Pennsylvania", "RI"=>"Rhode Island", "SC"=>"South Carolina", "SD"=>"South Dakota", "TN"=>"Tennessee", "TX"=>"Texas", "UT"=>"Utah", "VT"=>"Vermont", "VA"=>"Virginia", "WA"=>"Washington", "WV"=>"West Virginia", "WI"=>"Wisconsin", "WY"=>"Wyoming");
+        // dd($request->all());
+        $stateKey ="";
+        foreach($states as $key => $value){
+            if($value == $request['state']){
+                $stateKey = $key;
+            }
+        }
+
+
+        $request->request->add(['country' => 'US']);
+        $request['state'] = $stateKey;
         $rc = new RatesController();
         $result = $rc->SalesTaxDeterminer($request);
         // $result = $rc::SalesTaxDeterminer($request->all());
         // dd($result);
-        $result = "$" . ($result['rate']/100) * $request->amount;
+        $result = "$" . number_format(($result['rate']/100) * $request->amount, 2);
 
-        return array_merge(parent::share($request), [
-            'auth' => [
-                'user' => $request->user(),
-            ],
-            'flash' => [
-                'message' => session($result)
-            ]
-        ]);
-        return redirect()->route('dashboard')->with('message', $result);
+        return $result;
+        // return redirect()->route('dashboard')->with('message', $result);
     }
 }

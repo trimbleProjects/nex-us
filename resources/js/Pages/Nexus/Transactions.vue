@@ -38,7 +38,7 @@ export default {
             <div class="grid justify-center content-center">Transaction Amount</div>
             <div class="grid justify-center content-center">Rate</div>
             <div class="grid justify-center content-center">Taxed Amount</div>
-            <div class="grid justify-center content-center">City</div>
+            <div class="grid justify-center content-center">City / Zip</div>
             <div class="grid justify-center content-center">Time</div>
         </div>
         <div v-for="tran in transactions"
@@ -53,7 +53,7 @@ export default {
             <div class="grid justify-center content-center">{{ tran.amount.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}}</div>
             <div class="grid justify-center content-center">{{ tran.rate }}</div>
             <div class="grid justify-center content-center">{{ tran.tax_amount.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') }}</div>
-            <div class="grid justify-center content-center">{{ tran.city }}</div>
+            <div class="grid justify-center content-center">{{ tran.city }}<br/>{{ tran.zip_code }}</div>
             
             <div id="time" class="grid justify-center content-center">{{ moment.utc(tran.created_at).tz(timezone.tz.guess()).format("MM-DD-YYYY h:mm:ss a") }}</div>
         </div>
