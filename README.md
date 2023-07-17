@@ -1,3 +1,6 @@
+<p>This project is an API that enables the looking up of the sales tax amount needed to be chared for e-commerce transactions. There is a user dashboard so the customer could login, review their transactions, and edit transactions.</p>
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
